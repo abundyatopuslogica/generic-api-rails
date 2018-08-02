@@ -36,6 +36,13 @@ module GenericApiRails
         @sign_up_with
       end
 
+      # do_after_logout takes "authenticated" as an argument, and is called
+      # after the user has been logged out
+      def do_after_logout(&blk)
+        @do_after_logout = blk if blk
+        @do_after_logout
+      end
+
       # reset_password_with takes (token,password), and should return
       # the user if successful, and nil if unsuccessful.
       def reset_password_with(&blk)

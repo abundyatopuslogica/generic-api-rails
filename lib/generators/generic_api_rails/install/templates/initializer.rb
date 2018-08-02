@@ -18,6 +18,11 @@ GenericApiRails.config do |config|
     
     Credential.sign_up(username,password)
   end
+
+  # do_after_logout takes "authenticated" as an argument, and is called
+  # after the user has been logged out
+  config.do_after_logout do |authenticated|
+  end
   
   # Authorization function: by default does not allow any resources to
   # be accessed:

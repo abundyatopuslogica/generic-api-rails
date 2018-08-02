@@ -376,6 +376,7 @@ class GenericApiRails::AuthenticationController < GenericApiRails::BaseControlle
     render_error(ApiError::INVALID_API_TOKEN) and return unless @authenticated
 
     @api_token.destroy!
+    GenericApiRails.config.do_after_logout.call(@authenticated);
     render :json => { status: "OK" }
   end
 end
